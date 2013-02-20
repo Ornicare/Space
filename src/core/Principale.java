@@ -1,7 +1,7 @@
 package core;
 
-import Console.Console;
 import gameEngine.PluginPlatform;
+import Console.Console;
 
 public class Principale {
 

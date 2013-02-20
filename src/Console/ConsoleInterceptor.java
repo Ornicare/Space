@@ -3,7 +3,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.io.PrintStream;
 
-
+/**
+ * This class reimplements a PrintStream.
+ * Used to intercept standard PrintStreams.
+ * 
+ * @author Ornicare
+ *
+ */
 public abstract class ConsoleInterceptor extends PrintStream{
 
 	protected PrintStream originalPrintStream;
@@ -11,9 +17,7 @@ public abstract class ConsoleInterceptor extends PrintStream{
 	protected Color color;
 	protected Font font;
 	
-	/** 
-     * Class constructor.
-     */
+	
 	public ConsoleInterceptor(PrintStream originalPrintStream, ConsoleGUI console, Color color,Font font) {
 		super(originalPrintStream);
 		this.originalPrintStream = originalPrintStream;

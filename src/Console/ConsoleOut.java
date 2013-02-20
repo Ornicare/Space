@@ -4,6 +4,12 @@ import java.awt.Font;
 import java.io.PrintStream;
 
 
+/**
+ * Used to intercept System.out
+ * 
+ * @author Ornicare
+ *
+ */
 public class ConsoleOut extends ConsoleInterceptor{
 	
 	public ConsoleOut(PrintStream originalPrintStream, ConsoleGUI console, Color color,Font font) {
@@ -25,5 +31,11 @@ public class ConsoleOut extends ConsoleInterceptor{
 		super(originalPrintStream,console,Color.RED,font);
 		System.setOut(this);
 	}
+	
+	//Restore the old PrintStream.
+	public void finalize()
+    {
+         System.setOut(originalPrintStream); 
+    }
 
 }

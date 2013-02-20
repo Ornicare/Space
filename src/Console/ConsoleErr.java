@@ -3,7 +3,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.io.PrintStream;
 
-
+/**
+ * Used to intercept System.err
+ * 
+ * @author Ornicare
+ *
+ */
 public class ConsoleErr extends ConsoleInterceptor{
 	
 	public ConsoleErr(PrintStream originalPrintStream, ConsoleGUI console, Color color,Font font) {
@@ -25,4 +30,10 @@ public class ConsoleErr extends ConsoleInterceptor{
 		super(originalPrintStream,console,Color.RED,font);
 		System.setErr(this);
 	}
+	
+	//Restore the old PrintStream.
+	public void finalize()
+    {
+         System.setErr(originalPrintStream);
+    }
 }

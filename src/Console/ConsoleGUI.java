@@ -1,33 +1,62 @@
 package Console;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.WindowConstants;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+/**
+ * Generate a new GUI for the console.
+ * Used to print text with @see {@link ConsoleGUI#addText(String, Font, Color)}
+ * 
+ * @author Ornicare
+ *
+ */
 public class ConsoleGUI extends JFrame {
-
+	
 	/**
-	 * 
-	 */
+     * Console's text font. 
+     * Default to "Courrier", 12 pts
+     * 
+     * @see ConsoleGUI#setDefaultFont()
+     * @see ConsoleGUI#getDefaultFont(Font)
+     */
 	private Font defaultFont = new Font("Courrier",Font.PLAIN, 12);
+	
+	/**
+     * Console's text color. 
+     * Defaukt to white
+     * 
+     * @see ConsoleGUI#setDefaultColor()
+     * @see ConsoleGUI#getDefaultColor(Color)
+     */
 	private Color defaultColor = Color.WHITE;
+	
+	/**
+     * Console's text background. 
+     * Default to black
+     * 
+     * @see ConsoleGUI#getDefaultColorBackground()
+     * @see ConsoleGUI#setDefaultColorBackground(Color)
+     */
 	private Color defaultColorBackground = Color.BLACK;
 	
+	/**
+     * Content of the @see {@link ConsoleGUI#textPane}
+     * 
+     * @see ConsoleGUI#getDefaultColorBackground()
+     * @see ConsoleGUI#setDefaultColorBackground(Color)
+     */
 	private StyledDocument doc;
 	
-	private JPanel container = new JPanel();
-	private ArrayList<String> LastMessageList = new ArrayList<String>();
 	private JTextPane textPane = new JTextPane();
-	private JScrollPane scroll = new JScrollPane(textPane);
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -40,69 +69,87 @@ public class ConsoleGUI extends JFrame {
 		this.defaultFont = defaultFont;
 	}
 
-
 	public Color getDefaultColor() {
 		return defaultColor;
 	}
-
 
 	public void setDefaultColor(Color defaultColor) {
 		this.defaultColor = defaultColor;
 	}
 
-
 	public Color getDefaultColorBackground() {
 		return defaultColorBackground;
 	}
-
 
 	public void setDefaultColorBackground(Color defaultColorBackground) {
 		this.defaultColorBackground = defaultColorBackground;
 	}
 
-
+	
+	/**
+     * Constructor
+     * <p>
+     * Create a new GUI for the Console with defaults font, display text's color, and background.
+     * </p>
+     */
 	public ConsoleGUI() {
-		this.setResizable(false);
-		LastMessageList.add("");
+		
 		this.setTitle("Console");
 		this.setSize(500, 500);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-		container.setBackground(Color.white);
-		container.setLayout(new BorderLayout());
-		JPanel south = new JPanel();
-		south.setLayout(new BorderLayout());
-		container.add(south, BorderLayout.SOUTH);
+		
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		
+			textPane.setEditable(false);
+			textPane.setBackground(defaultColorBackground);
+			textPane.setForeground(defaultColor);
+		//Ajout d'un scrollPane pour avoir des scrollBars
+		JScrollPane scrollP = new JScrollPane(textPane);
+		scrollP.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollP.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		this.setContentPane(scrollP);
+			
+		//Contenu du textPane
 		doc = textPane.getStyledDocument();
-		
-		this.setContentPane(container);
-		//textPane.setEnabled(false);
-		textPane.setEditable(false);
-		textPane.setBackground(defaultColorBackground);
-		textPane.setForeground(defaultColor);
-		
-		setDefaultCloseOperation(close());
-		
-		this.getContentPane().add(scroll, BorderLayout.CENTER);
-		this.setVisible(true);
-		
-		
+
+		this.setVisible(true);	
 	}
 
-	
+	/**
+	 * <code>font</code> defaults to {@link defaultFont}.
+	 *
+	 * @see ConsoleGUI#addText(String ,Font, Color)
+	 */
 	public void addText(String text) {
 		addText(text, defaultFont , defaultColor);
 	}
 	
+	/**
+	 * <code>color</code> defaults to {@link defaultColor}.
+	 *
+	 * @see ConsoleGUI#addText(String ,Font, Color)
+	 */
 	public void addText(String text, Color color) {
 		addText(text, defaultFont, color);
 	}
 	
+	/**
+	 * <code>font</code> defaults to {@link defaultFont}.
+	 * <code>color</code> defaults to {@link defaultColor}.
+	 *
+	 * @see ConsoleGUI#addText(String ,Font, Color)
+	 */
 	public void addText(String text, Font font) {
 		addText(text, font, defaultColor);
 	}
 
-
+	/**
+	 * Add text to the console
+	 * 
+	 * @param text text to put on the console
+	 * @param font <code>text</code>'s font
+	 * @param color <code>text</code>'s color
+	 */
 	public void addText(String text, Font font, Color color) {
 		//textPane.setFont(font);
 		//setDefaultColor(color);
@@ -116,11 +163,14 @@ public class ConsoleGUI extends JFrame {
 
 	}
 
-
-	public int close() {
+	/**
+	 * Equivalent of WindowConstants.DISPOSE_ON_CLOSE
+	 * Hide and dispose the window.
+	 * 
+	 */
+	public void close() {
 		setVisible(false);
 		dispose();
-		return 1;
 	}
 
 }
