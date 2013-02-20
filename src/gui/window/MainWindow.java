@@ -3,6 +3,8 @@
  */
 package gui.window;
 
+import gui.component.ButtonPlay;
+
 /**
  * @author CLEm
  *
@@ -19,10 +21,10 @@ public class MainWindow extends javax.swing.JFrame {
 		this.setSize( 1000, 700 ); 
 		this.setLocationRelativeTo( null ); 
 		
-		 
-        
-        
-        
+		// *** components ***
+        	// button: play
+			//gui.component.ButtonPlay buttonPlay = ;
+		
         // exit 
         this.setDefaultCloseOperation( javax.swing.JFrame.EXIT_ON_CLOSE ); 
         
