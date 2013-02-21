@@ -157,6 +157,11 @@ public class ConsoleGUI extends JFrame {
 		//textPane.append(text+color.toString());
 		Style style = textPane.addStyle("I'm a Style", null);
         StyleConstants.setForeground(style, color);
+        StyleConstants.setFontFamily(style, font.getFamily());
+        StyleConstants.setFontSize(style, font.getSize());
+        
+        StyleConstants.setItalic(style, (font.getStyle() & Font.ITALIC) != 0);
+        StyleConstants.setBold(style, (font.getStyle() & Font.BOLD) != 0);
 
         try { doc.insertString(doc.getLength(), text,style); }
         catch (BadLocationException e){}

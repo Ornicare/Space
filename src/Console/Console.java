@@ -12,7 +12,9 @@ import java.awt.Font;
 public abstract class Console {
 	
 	private static ConsoleGUI console;
+	@SuppressWarnings("unused")
 	private static ConsoleOut outInterceptor;
+	@SuppressWarnings("unused")
 	private static ConsoleErr errInterceptor;
 	
 	/**
@@ -64,27 +66,6 @@ public abstract class Console {
 	public static void setWarnFont(Font warnFont) {
 		Console.warnFont = warnFont;
 	}
-
-	/**
-	 * 
-	 * @param o : 
-	 * @param append : 
-	 */
-	private static void debug(Object o, String append) {
-			
-		String sortie = "";
-		if(o.getClass()==Character.class || o.getClass()==Double.class || o.getClass()==Float.class || o.getClass()==Long.class || o.getClass()==Integer.class || o.getClass()==Boolean.class) {
-			sortie = String.valueOf(o);
-		}
-		else {
-			sortie = o.toString();
-		}
-		
-		sortie+=append;
-		if(debug) console.addText(sortie, debugFont, debugColor);
-			
-	}
-
 
 	/**
 	 * If @see {@link Console#debug} is true, call {@link Console#print(Object, Font, Color)} with all non-given args to their defaults values for the debug mode.
