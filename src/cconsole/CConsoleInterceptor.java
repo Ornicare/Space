@@ -1,4 +1,4 @@
-package Console;
+package cconsole;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.PrintStream;
@@ -10,15 +10,15 @@ import java.io.PrintStream;
  * @author Ornicare
  *
  */
-public abstract class ConsoleInterceptor extends PrintStream{
+public abstract class CConsoleInterceptor extends PrintStream{
 
 	protected PrintStream originalPrintStream;
-	protected ConsoleGUI console;
+	protected CConsoleGUI console;
 	protected Color color;
 	protected Font font;
 	
 	
-	public ConsoleInterceptor(PrintStream originalPrintStream, ConsoleGUI console, Color color,Font font) {
+	public CConsoleInterceptor(PrintStream originalPrintStream, CConsoleGUI console, Color color,Font font) {
 		super(originalPrintStream);
 		this.originalPrintStream = originalPrintStream;
 		this.console=console;

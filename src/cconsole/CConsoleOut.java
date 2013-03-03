@@ -1,4 +1,4 @@
-package Console;
+package cconsole;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.PrintStream;
@@ -10,24 +10,24 @@ import java.io.PrintStream;
  * @author Ornicare
  *
  */
-public class ConsoleOut extends ConsoleInterceptor{
+public class CConsoleOut extends CConsoleInterceptor{
 	
-	public ConsoleOut(PrintStream originalPrintStream, ConsoleGUI console, Color color,Font font) {
+	public CConsoleOut(PrintStream originalPrintStream, CConsoleGUI console, Color color,Font font) {
 		super(originalPrintStream,console,color,font);
 		System.setOut(this);
 	}
 	
-	public ConsoleOut(PrintStream originalPrintStream, ConsoleGUI console) {
+	public CConsoleOut(PrintStream originalPrintStream, CConsoleGUI console) {
 		super(originalPrintStream,console,console.getDefaultColor(),console.getDefaultFont());
 		System.setOut(this);
 	}
 	
-	public ConsoleOut(PrintStream originalPrintStream, ConsoleGUI console, Color color) {
+	public CConsoleOut(PrintStream originalPrintStream, CConsoleGUI console, Color color) {
 		super(originalPrintStream,console,color,console.getDefaultFont());
 		System.setOut(this);
 	}
 	
-	public ConsoleOut(PrintStream originalPrintStream, ConsoleGUI console, Font font) {
+	public CConsoleOut(PrintStream originalPrintStream, CConsoleGUI console, Font font) {
 		super(originalPrintStream,console,Color.RED,font);
 		System.setOut(this);
 	}
