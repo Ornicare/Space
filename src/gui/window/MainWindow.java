@@ -3,7 +3,10 @@
  */
 package gui.window;
 
-import gui.component.ButtonPlay;
+import java.awt.Color;
+
+import cconsole.CConsole;
+//import gui.component.ButtonPlay;
 
 /**
  * @author CLEm
@@ -18,15 +21,20 @@ public class MainWindow extends javax.swing.JFrame {
 
 	public MainWindow() {
 		this.setTitle( "Space" ); 
-		this.setSize( 1000, 700 ); 
+		this.setSize( 800, 600 ); 
 		this.setLocationRelativeTo( null ); 
 		
 		// *** components ***
+			// top menu bar 
+        	this.setJMenuBar( new gui.component.TopMenuBar(this).getMenuBar() );
+        
         	// button: play
-			//gui.component.ButtonPlay buttonPlay = ;
+        	
+        
+        
 		
         // exit 
-        this.setDefaultCloseOperation( javax.swing.JFrame.EXIT_ON_CLOSE ); 
+        this.setDefaultCloseOperation( javax.swing.JFrame.DISPOSE_ON_CLOSE ); 
         
         // draw 
 		this.setVisible( true ); 
