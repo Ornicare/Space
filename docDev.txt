@@ -1,0 +1,29 @@
+Doc for development of plugin
+###########################################################
+-----------------------------------------------------------
+
+Configuration file: XML
+
+<extension point="implemented_interface">
+	<object id="object_id"
+		name="plugin_name"
+		class="classToBeLoad"
+		lazy="true/false"
+		coreLinked="true/false"
+		>
+		<dependency class="className"/>
+	</object>
+</extension>
+
+The plugin must implement the linked interface.
+
+
+##########################################################
+----------------------------------------------------------
+
+Calling another plugin
+
+There is two ways of calling another plugin.
+First, you know the plugin's name. You just have to call the pluginPlatform's getPluginObject() function with the plugin's name.
+Or, you don't know the plugin name and you want a plugin of a type. Call the getPluginFromType() function with the wanted type name.
+In both cases, you'll get an object.

@@ -3,9 +3,6 @@
  */
 package gui.window;
 
-import java.awt.Color;
-
-import cconsole.CConsole;
 //import gui.component.ButtonPlay;
 
 /**

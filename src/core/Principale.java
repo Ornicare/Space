@@ -1,6 +1,6 @@
 package core;
 
-import gameEngine.PluginPlatform;
+import pluginEngine.PluginPlatform;
 import cconsole.CConsole;
 
 public class Principale {

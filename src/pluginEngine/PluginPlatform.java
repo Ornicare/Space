@@ -1,7 +1,11 @@
-package gameEngine;
+package pluginEngine;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
+import cconsole.CConsole;
+import cconsole.CConsoleErr;
 
 /**
  * PluginPlatform is the plugin's management class.
@@ -21,6 +25,8 @@ public class PluginPlatform {
 
 	private Map<String, Plugin> pluginList_;
 
+	private String PLUGINS_PATH = "pluginsj";
+
 	// constructors
 
 	public PluginPlatform() {
@@ -30,6 +36,7 @@ public class PluginPlatform {
 	// getters
 
 	public Map<String, Plugin> getPluginList() {
+		constructPluginList();
 		return pluginList_;
 	}
 
@@ -54,8 +61,7 @@ public class PluginPlatform {
 			if (retour == null) {
 				retour = getPluginAdvanced(name);
 			} else {
-				System.err.println(name
-						+ " wasn't found in the plugin list!");
+				System.err.println(name + " wasn't found in the plugin list!");
 			}
 		} else {
 			System.err.println("plugin's name is null");
@@ -82,4 +88,38 @@ public class PluginPlatform {
 		return retour;
 
 	}
+
+	/**
+	 * constructPluginList()
+	 * <p>
+	 * This method is used to construct the plugin's list by reading the folder
+	 * "plugins". Create the directory if it doesn't exist
+	 */
+	private void constructPluginList() {
+		File root = new File(PLUGINS_PATH);
+		if(root == null){
+			if(root.canWrite()){
+				CConsole.println("path");
+			}
+			else{
+				CConsole.warnln("directory "+PLUGINS_PATH+" are not writable! Check wether you have permission on this directory");
+			}
+		}
+		File[] list = root.listFiles();
+		for (File f : list) {
+			if (f.isDirectory()) {
+				addPluginListElement(f);
+			}
+		}
+
+	}
+
+	/**
+	 * 
+	 * @param pluginPath a File matching a plugin directory
+	 */
+	private void addPluginListElement(File pluginPath) {
+		System.out.println(pluginPath.getAbsolutePath());
+	}
+
 }

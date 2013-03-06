@@ -1,0 +1,9 @@
+<extension point="Iweapon">
+	<object id="monArme1"
+		name="destructor"
+		class="Destructor"
+		lazy="false"
+		coreLinked="false"
+		>
+	</object>
+</extension>
