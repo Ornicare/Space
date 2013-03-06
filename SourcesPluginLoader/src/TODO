@@ -1,1 +1,3 @@
-Une d�pendance entre PluginBase et PluginManager, � discuter
+﻿Une dépendance entre PluginBase et PluginManager, à discuter
+Récupération du nom du jar : ... le dossier plugins n'est pas fixe....
+Les dépendances cycliques ! Pas encore vérifiées.
